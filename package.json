@@ -34,11 +34,11 @@
 		"test:e2e:open": "pnpm run build && cypress open",
 		"devserver:start": "vite serve"
 	},
-	"author": "CodeX",
+	"author": "CodeX & immersedone",
 	"license": "Apache-2.0",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/codex-team/editor.js.git"
+		"url": "git+https://github.com/immersedone/vite-editor.js.git"
 	},
 	"devDependencies": {
 		"@codexteam/shortcuts": "^1.2.0",
