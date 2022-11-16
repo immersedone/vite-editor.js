@@ -13,11 +13,11 @@
 	],
 	"scripts": {
 		"clear": "rimraf dist && mkdirp dist",
-		"build": "yarn clear && yarn build:vite:prod",
-		"build:dev": "yarn clear && yarn build:vite:dev",
+		"build": "pnpm run clear && pnpm run build:vite:prod",
+		"build:dev": "pnpm run clear && pnpm run build:vite:dev",
 		"build:vite:dev": "vite",
 		"build:vite:prod": "vite build",
-		"lint": "eslint src/ --ext .ts && yarn lint:tests",
+		"lint": "eslint src/ --ext .ts && pnpm run lint:tests",
 		"lint:errors": "eslint src/ --ext .ts --quiet",
 		"lint:fix": "eslint src/ --ext .ts --fix",
 		"lint:tests": "eslint test/ --ext .ts",
@@ -26,12 +26,12 @@
 		"pull_tools": "git submodule update --init --recursive",
 		"_tools:checkout": "git submodule foreach \"git checkout master || git checkout main\"",
 		"_tools:pull": "git submodule foreach git pull",
-		"_tools:yarn": "git submodule foreach yarn",
-		"_tools:build": "git submodule foreach yarn build",
-		"_tools:make": "yarn _tools:yarn && yarn _tools:build",
-		"tools:update": "yarn _tools:checkout && yarn _tools:pull && yarn _tools:make",
-		"test:e2e": "yarn build && cypress run",
-		"test:e2e:open": "yarn build && cypress open",
+		"_tools:pnpm": "git submodule foreach pnpm install",
+		"_tools:build": "git submodule foreach pnpm run build",
+		"_tools:make": "pnpm run _tools:pnpm && pnpm run _tools:build",
+		"tools:update": "pnpm run _tools:checkout && pnpm run _tools:pull && pnpm run _tools:make",
+		"test:e2e": "pnpm run build && cypress run",
+		"test:e2e:open": "pnpm run build && cypress open",
 		"devserver:start": "vite serve"
 	},
 	"author": "CodeX",
@@ -42,25 +42,25 @@
 	},
 	"devDependencies": {
 		"@codexteam/shortcuts": "^1.2.0",
-		"@cypress/code-coverage": "^3.10.0",
 		"@editorjs/code": "^2.7.0",
 		"@editorjs/delimiter": "^1.2.0",
 		"@editorjs/header": "^2.6.2",
 		"@editorjs/simple-image": "^1.4.1",
-		"@types/node": "^18.11.5",
-		"cypress": "^10.10.0",
+		"@types/node": "^18.11.9",
+		"cypress": "^11.1.0",
 		"cypress-intellij-reporter": "^0.0.7",
-		"eslint": "^7.32.0",
-		"eslint-config-codex": "^1.7.0",
+		"eslint": "^8.27.0",
 		"eslint-plugin-chai-friendly": "^0.7.2",
 		"eslint-plugin-cypress": "^2.12.1",
 		"html-janitor": "^2.0.4",
 		"mkdirp": "^1.0.4",
 		"rimraf": "^3.0.2",
 		"svg-loader": "^0.0.2",
-		"svg-sprite": "^2.0.0",
+		"svg-sprite": "^2.0.2",
 		"ts-node": "^10.9.1",
-		"typescript": "^4.8.4"
+		"typescript": "^4.9.3",
+		"vite": "^3.2.4",
+		"vite-plugin-banner": "^0.6.1"
 	},
 	"collective": {
 		"type": "opencollective",
@@ -69,6 +69,6 @@
 	"dependencies": {
 		"codex-notifier": "^1.1.2",
 		"codex-tooltip": "^1.0.5",
-		"nanoid": "^3.1.22"
+		"nanoid": "^4.0.0"
 	}
 }
